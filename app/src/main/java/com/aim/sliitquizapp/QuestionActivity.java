@@ -71,66 +71,19 @@ public class QuestionActivity extends AppCompatActivity {
                     b3.setText(question.getOption3());
                     b4.setText(question.getOption4());
 
-
                     b1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             if(b1.getText().toString().equals(question.getAnswer())){
-
                                         correct++;
                                         updateQuestion();
-
-
                             }else{
                                 wrong++;
                                 updateQuestion();
                             }
                         }
                     });
-                    b2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if(b2.getText().toString().equals(question.getAnswer())){
 
-                                        correct++;
-                                        updateQuestion();
-
-
-                            }else{
-                                wrong++;
-                                updateQuestion();
-                            }
-                        }
-                    });
-                    b3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if(b1.getText().toString().equals(question.getAnswer())){
-
-                                        correct++;
-                                        updateQuestion();
-
-
-
-                            }else{
-                                wrong++;
-                                updateQuestion();
-                            }
-                        }
-                    });
-                    b4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if(b1.getText().toString().equals(question.getAnswer())){
-                                        correct++;
-                                        updateQuestion();
-
-                            }else{
-                                wrong++;
-                                updateQuestion();
-                            }
-                        }
-                    });
                 }
 
                 @Override
