@@ -8,4 +8,7 @@
     <string name="btn_feed">FEEDBACK</string>
     <string name="btn_ins">QUIZ INSTRUCTION</string>
     <string name="btn_next">Next</string>
+    <string name="tv_skip">SKIPPED</string>
+    <string name="tv_correct">CORRECT</string>
+    <string name="tv_wrong">WRONG</string>
 </resources>

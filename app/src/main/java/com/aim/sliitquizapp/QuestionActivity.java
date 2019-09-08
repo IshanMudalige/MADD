@@ -3,6 +3,7 @@ package com.aim.sliitquizapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -29,7 +30,12 @@ public class QuestionActivity extends AppCompatActivity {
     int wrong = 0;
     int skip = 0;
     int total = 1;
+    int noOfQus = 5;
     DatabaseReference reference;
+    public static final String CORRECT = "com.aim.sliitquizapp.CORRECT";
+    public static final String WRONG = "com.aim.sliitquizapp.WRONG";
+    public static final String SKIP = "com.aim.sliitquizapp.SKIP";
+    public static final String TOTAL = "com.aim.sliitquizapp.SKIP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,52 +59,14 @@ public class QuestionActivity extends AppCompatActivity {
         reverseTimer(90,timer);
     }
 
-    /*
-    private void updateQuestion(){
-
-        if(total > 5){
-
-        }else{
-            reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
-            reference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    final Question question = dataSnapshot.getValue(Question.class);
-
-                    qus.setText(question.getQuestion());
-                    b1.setText(question.getOption1());
-                    b2.setText(question.getOption2());
-                    b3.setText(question.getOption3());
-                    b4.setText(question.getOption4());
-
-                    b1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if(b1.getText().toString().equals(question.getAnswer())){
-                                        correct++;
-                                        updateQuestion();
-                            }else{
-                                wrong++;
-                                updateQuestion();
-                            }
-                        }
-                    });
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-        total++;
-    }
-    */
-
     public void next(){
-        if(total > 5){
-
+        if(total > noOfQus){
+            Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
+            intent.putExtra(CORRECT,String.valueOf(correct));
+            intent.putExtra(WRONG,String.valueOf(wrong));
+            //intent.putExtra(SKIP,String.valueOf(skip));
+            intent.putExtra(TOTAL,String.valueOf((noOfQus)));
+            startActivity(intent);
         }else{
             reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
             reference.addValueEventListener(new ValueEventListener() {
@@ -142,7 +110,6 @@ public class QuestionActivity extends AppCompatActivity {
             });
         }
         total++;
-
     }
 
     public void reverseTimer(int seconds,final TextView tv){
@@ -158,7 +125,14 @@ public class QuestionActivity extends AppCompatActivity {
                 tv.setText(String.format("%02d",minutes)+":"+String.format("%02d",seconds));
             }
             public void onFinish(){
+                //int skp = (total-1)-(correct+wrong);
                 tv.setText("Finished");
+                Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
+                intent.putExtra(CORRECT,String.valueOf(correct));
+                intent.putExtra(WRONG,String.valueOf(wrong));
+                //intent.putExtra(SKIP,String.valueOf(skp));
+                intent.putExtra(TOTAL,String.valueOf(noOfQus));
+                startActivity(intent);
 
             }
         }.start();
