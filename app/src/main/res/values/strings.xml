@@ -8,7 +8,13 @@
     <string name="btn_feed">FEEDBACK</string>
     <string name="btn_ins">QUIZ INSTRUCTION</string>
     <string name="btn_next">Next</string>
+    <string name="btn_answer">VIEW ANSWERS</string>
+    <string name="btn_retake">RETAKE</string>
     <string name="tv_skip">SKIPPED</string>
     <string name="tv_correct">CORRECT</string>
     <string name="tv_wrong">WRONG</string>
+    <string name="tx_bad">Oops!! Your score is not very good! You need to study more.</string>
+    <string name="tx_best">Wow!! You are brilliant</string>
+    <string name="tx_good">Good! Study more to gain higher mark</string>
+
 </resources>

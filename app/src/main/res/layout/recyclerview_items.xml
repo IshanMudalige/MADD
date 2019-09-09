@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    card_view:contentPadding="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="8dp"
+    card_view:cardMaxElevation="8dp"
+    card_view:cardUseCompatPadding="true"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@android:color/background_light"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/StudentName"
+            android:layout_width="199dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="left|center_vertical"
+            android:text="QUESTION"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:textSize="22dp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="362dp"
+            android:layout_height="82dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toRightOf="@+id/StudentName"
+            android:gravity="center_horizontal|left"
+            android:text="Show Student Name"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:textSize="18sp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/StudentNumber"
+            android:layout_width="134dp"
+            android:layout_height="26dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="Correct Answer:"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="18sp"
+            card_view:layout_constraintBaseline_toBaselineOf="@+id/tvCAnswer"
+            card_view:layout_constraintEnd_toStartOf="@+id/tvCAnswer"
+            card_view:layout_constraintHorizontal_bias="0.038"
+            card_view:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCAnswer"
+            android:layout_width="219dp"
+            android:layout_height="26dp"
+            android:layout_alignTop="@+id/StudentNumber"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="44dp"
+            android:layout_toRightOf="@+id/StudentNumber"
+            android:gravity="left|center_vertical"
+            android:text="Show Number"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:textSize="18sp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

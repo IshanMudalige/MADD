@@ -7,14 +7,16 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
     int pStatus = 0;
+    int p = 0;
     private Handler handler = new Handler();
-    TextView tvP,tvCorrect,tvWrong,tvSkip;
+    TextView tvP,tvCorrect,tvWrong,tvSkip,tvComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class ResultActivity extends AppCompatActivity {
         tvWrong = findViewById(R.id.tvWrong);
         tvSkip = findViewById(R.id.tvSkip);
         tvP = findViewById(R.id.tvPercentage);
+        tvComment = findViewById(R.id.tvComment);
 
         Intent intent = getIntent();
 
@@ -36,6 +39,8 @@ public class ResultActivity extends AppCompatActivity {
         int wrong = Integer.parseInt(wr);
         int total = Integer.parseInt(tot);
         int skip = total-correct-wrong;
+
+        final int p = (correct*100)/total;
 
         tvCorrect.setText(cr);
         tvWrong.setText(wr);
@@ -54,7 +59,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                while (pStatus < 100) {
+                while (pStatus<p) {
                     pStatus += 1;
 
                     handler.post(new Runnable() {
@@ -74,5 +79,20 @@ public class ResultActivity extends AppCompatActivity {
                 }
             }
         }).start();
+
+        if(p >= 80) {
+            tvComment.setText(R.string.tx_best);
+        }else if(p >= 50) {
+            tvComment.setText(R.string.tx_good);
+
+        }else{
+            tvComment.setText(R.string.tx_bad);
+        }
     }
+
+    public void answerBtn(View view){
+        Intent intent = new Intent(ResultActivity.this,AnswerActivity.class);
+        startActivity(intent);
+    }
+
 }
