@@ -11,12 +11,18 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.aim.sliitquizapp.model.Question;
+
+import java.util.ArrayList;
+
 public class ResultActivity extends AppCompatActivity {
 
     int pStatus = 0;
     int p = 0;
     private Handler handler = new Handler();
     TextView tvP,tvCorrect,tvWrong,tvSkip,tvComment;
+    public static final String QLIST = "com.aim.sliitquizapp.QLIST";
+    ArrayList<Question> list = new ArrayList<Question>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,8 @@ public class ResultActivity extends AppCompatActivity {
         tvComment = findViewById(R.id.tvComment);
 
         Intent intent = getIntent();
+
+        list = intent.getParcelableArrayListExtra(QuestionActivity.QLIST);
 
         String cr = intent.getStringExtra(QuestionActivity.CORRECT);
         String wr = intent.getStringExtra(QuestionActivity.WRONG);
@@ -92,6 +100,7 @@ public class ResultActivity extends AppCompatActivity {
 
     public void answerBtn(View view){
         Intent intent = new Intent(ResultActivity.this,AnswerActivity.class);
+        intent.putParcelableArrayListExtra(QLIST, (ArrayList<Question>) list);
         startActivity(intent);
     }
 

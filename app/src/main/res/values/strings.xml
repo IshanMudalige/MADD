@@ -16,5 +16,8 @@
     <string name="tx_bad">Oops!! Your score is not very good! You need to study more.</string>
     <string name="tx_best">Wow!! You are brilliant</string>
     <string name="tx_good">Good! Study more to gain higher mark</string>
+    <string name="tv_qus">QUESTION</string>
+    <string name="tv_youAns"> Your Answer</string>
+    <string name="tv_corrAns">Correct Answer:</string>
 
 </resources>

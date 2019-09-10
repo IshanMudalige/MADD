@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -19,6 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -34,8 +38,10 @@ public class QuestionActivity extends AppCompatActivity {
     DatabaseReference reference;
     public static final String CORRECT = "com.aim.sliitquizapp.CORRECT";
     public static final String WRONG = "com.aim.sliitquizapp.WRONG";
-    public static final String SKIP = "com.aim.sliitquizapp.SKIP";
-    public static final String TOTAL = "com.aim.sliitquizapp.SKIP";
+    public static final String QLIST = "com.aim.sliitquizapp.QLIST";
+    public static final String TOTAL = "com.aim.sliitquizapp.TOTAL";
+
+    ArrayList<Question> list = new ArrayList<Question>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +70,10 @@ public class QuestionActivity extends AppCompatActivity {
             Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
             intent.putExtra(CORRECT,String.valueOf(correct));
             intent.putExtra(WRONG,String.valueOf(wrong));
-            //intent.putExtra(SKIP,String.valueOf(skip));
             intent.putExtra(TOTAL,String.valueOf((noOfQus)));
+
+            intent.putParcelableArrayListExtra(QLIST, (ArrayList<Question>) list);
+
             startActivity(intent);
         }else{
             reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
@@ -75,6 +83,7 @@ public class QuestionActivity extends AppCompatActivity {
                     final Question question = dataSnapshot.getValue(Question.class);
 
                     qus.setText(" "+(total-1)+" . "+question.getQuestion());
+
                     rb1.setText(question.getOption1());
                     rb2.setText(question.getOption2());
                     rb3.setText(question.getOption3());
@@ -86,7 +95,10 @@ public class QuestionActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             final int s = radioGroup.getCheckedRadioButtonId();
                             rb = findViewById(s);
+
+
                             if(s == -1) {
+                                list.add(question);
                                 skip++;
                                 next();
                             }else if(rb.getText().toString().equals(question.getAnswer())){
@@ -94,12 +106,13 @@ public class QuestionActivity extends AppCompatActivity {
                                 next();
                             }else{
                                 wrong++;
+                                question.setChoice(rb.getText().toString());
+                                list.add(question);
                                 next();
                             }
                             radioGroup.clearCheck();
                         }
                     });
-
 
                 }
 

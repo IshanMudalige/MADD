@@ -3,6 +3,7 @@ package com.aim.sliitquizapp.model;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +46,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.tvCAnswer.setText(qus.getAnswer());
 
+        holder.tvChoice.setText(qus.getChoice());
+
+        if(qus.getChoice()==null){
+            holder.img.setImageResource(R.drawable.skip_icon);
+        }
+
     }
 
     @Override
@@ -57,14 +64,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public TextView tvQuestion;
         public TextView tvCAnswer;
+        public TextView tvChoice;
+        public ImageView img;
 
         public ViewHolder(View itemView) {
 
             super(itemView);
 
-            tvQuestion = (TextView) itemView.findViewById(R.id.tvQuestion);
+            tvQuestion = itemView.findViewById(R.id.tvQuestion);
 
-            tvCAnswer = (TextView) itemView.findViewById(R.id.tvCAnswer);
+            tvCAnswer = itemView.findViewById(R.id.tvCAnswer);
+
+            tvChoice = itemView.findViewById(R.id.tvChoice);
+
+            img = itemView.findViewById(R.id.imageView);
+
         }
     }
 }

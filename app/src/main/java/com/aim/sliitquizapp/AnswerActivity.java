@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.aim.sliitquizapp.model.Question;
@@ -20,25 +21,37 @@ import java.util.List;
 
 public class AnswerActivity extends AppCompatActivity {
 
+    ArrayList<Question> list = new ArrayList<Question>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
-        DatabaseReference databaseReference;
+        Intent intent = getIntent();
 
-        final List<Question> list = new ArrayList<>();
+        list = intent.getParcelableArrayListExtra(QuestionActivity.QLIST);
+
+
+        //DatabaseReference databaseReference;
+
+        //final List<Question> list = new ArrayList<>();
 
         final RecyclerView recyclerView;
 
         final RecyclerView.Adapter[] adapter = new RecyclerView.Adapter[1];
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(AnswerActivity.this));
 
+        recyclerView.setAdapter(adapter[0]);
+
+        adapter[0] = new RecyclerViewAdapter(AnswerActivity.this, list);
+
+        recyclerView.setAdapter(adapter[0]);
+/*
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Questions");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -47,9 +60,9 @@ public class AnswerActivity extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    Question studentDetails = dataSnapshot.getValue(Question.class);
+                    Question qus = dataSnapshot.getValue(Question.class);
 
-                    list.add(studentDetails);
+                    list.add(qus);
                 }
 
                 adapter[0] = new RecyclerViewAdapter(AnswerActivity.this, list);
@@ -66,6 +79,6 @@ public class AnswerActivity extends AppCompatActivity {
 
             }
         });
-
+*/
     }
 }
