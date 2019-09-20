@@ -19,5 +19,6 @@
     <string name="tv_qus">QUESTION</string>
     <string name="tv_youAns"> Your Answer</string>
     <string name="tv_corrAns">Correct Answer:</string>
+    <string name="action_clear">Clear Records</string>
 
 </resources>

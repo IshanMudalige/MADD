@@ -136,4 +136,9 @@ public class ResultActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void retakeBtn(View v){
+        Intent intent = new Intent(ResultActivity.this,SelectquizActivity.class);
+        startActivity(intent);
+    }
+
 }
