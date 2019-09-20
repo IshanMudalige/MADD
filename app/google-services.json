@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "159393345486-kh2m6kqon8lgoneuulagsc9nckgphj9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aim.sliitquizapp",
+            "certificate_hash": "952b51fe7d943de3e4f99451acce67def62c7b6f"
+          }
+        },
+        {
           "client_id": "159393345486-fsva1bnes65sjhpi83v2l4eg5423b2pg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
