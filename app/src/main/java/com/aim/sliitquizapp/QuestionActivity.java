@@ -33,8 +33,12 @@ public class QuestionActivity extends AppCompatActivity {
     int wrong = 0;
     int skip = 0;
     int total = 1;
-    int noOfQus = 5;
+    int noOfQus = 1;
+    String subject = "";
+    int icr = 0;
     DatabaseReference reference;
+    DatabaseReference reference1;
+
     public static final String CORRECT = "com.aim.sliitquizapp.CORRECT";
     public static final String WRONG = "com.aim.sliitquizapp.WRONG";
     public static final String QLIST = "com.aim.sliitquizapp.QLIST";
@@ -67,6 +71,9 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
+        Intent intent = getIntent();
+        subject = intent.getStringExtra(SelectquizActivity.SUBJECT);
+
         b5 = findViewById(R.id.button5);
 
         rb1 =findViewById(R.id.radioButton);
@@ -79,6 +86,19 @@ public class QuestionActivity extends AppCompatActivity {
         qus = findViewById(R.id.txList);
         timer = findViewById(R.id.textTimer);
         qCount = findViewById(R.id.textNum);
+
+        reference1 = FirebaseDatabase.getInstance().getReference().child(subject);
+        reference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                noOfQus = (int) dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         next();
         reverseTimer(90,timer);
@@ -97,7 +117,7 @@ public class QuestionActivity extends AppCompatActivity {
 
             startActivity(intent);
         }else{
-            reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
+            reference = FirebaseDatabase.getInstance().getReference().child(subject).child(String.valueOf(total));
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -109,7 +129,7 @@ public class QuestionActivity extends AppCompatActivity {
                     rb2.setText(question.getOption2());
                     rb3.setText(question.getOption3());
                     rb4.setText(question.getOption4());
-                    qCount.setText((total-1)+"/"+5);
+                    qCount.setText((total-1)+"/"+icr);
 
                     b5.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -158,8 +178,8 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 tv.setText(String.format("%02d",minutes)+":"+String.format("%02d",seconds));
 
-                if(total == noOfQus || doubleBackToExitPressedOnce)
-                    cancel();
+//                if(total == noOfQus || doubleBackToExitPressedOnce)
+//                    cancel();
             }
             public void onFinish(){
                 tv.setText("Finished");

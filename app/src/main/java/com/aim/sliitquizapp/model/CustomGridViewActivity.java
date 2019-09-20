@@ -20,7 +20,6 @@ public class CustomGridViewActivity extends BaseAdapter {
         this.gridViewImageId = gridViewImageId;
         this.gridViewString = gridViewString;
     }
-
     @Override
     public int getCount() {
         return gridViewString.length;

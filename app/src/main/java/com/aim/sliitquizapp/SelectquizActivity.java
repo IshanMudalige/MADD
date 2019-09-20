@@ -14,6 +14,7 @@ import com.aim.sliitquizapp.model.CustomGridViewActivity;
 public class SelectquizActivity extends AppCompatActivity {
 
     GridView androidGridView;
+    public static final String SUBJECT = "com.aim.sliitquizapp.SUBJECT";
 
     String[] gridViewString = {
             "IP", "MC", "SE", "IWT", "OOC", "OOP",
@@ -32,15 +33,17 @@ public class SelectquizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectquiz);
 
-        CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(SelectquizActivity.this, gridViewString, gridViewImageId);
+        final CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(SelectquizActivity.this, gridViewString, gridViewImageId);
         androidGridView=(GridView)findViewById(R.id.grid_view_image_text);
         androidGridView.setAdapter(adapterViewAndroid);
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int i, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                String sub = gridViewString[+i];
+                System.out.println("====="+sub);
                 Intent intent = new Intent(SelectquizActivity.this,QuestionActivity.class);
+                intent.putExtra(SUBJECT,sub);
                 startActivity(intent);
             }
         });

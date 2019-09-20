@@ -40,8 +40,6 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-
-
         subspin=findViewById(R.id.spinsub);
 
         txtque=findViewById(R.id.txtq);
@@ -55,30 +53,27 @@ public class QuizActivity extends AppCompatActivity {
 
 
         quiz= new Question();
-        dbref=FirebaseDatabase.getInstance().getReference().child("quiz");
-         dbref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                    maxid=(dataSnapshot.getChildrenCount());
-            }
+       // dbref=FirebaseDatabase.getInstance().getReference().child("Mc");
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
 
 
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 dbref=FirebaseDatabase.getInstance().getReference().child(subspin.getSelectedItem().toString());
+                dbref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists())
+                            maxid=(dataSnapshot.getChildrenCount());
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    }
+                });
 
                 quiz.setQuestion(txtque.getText().toString().trim());
                 quiz.setOption1(txtanswa.getText().toString().trim());
@@ -87,9 +82,8 @@ public class QuizActivity extends AppCompatActivity {
                 quiz.setOption4(txtanswd.getText().toString().trim());
                 quiz.setAnswer(txtanswer.getText().toString().trim());
 
-
                 //insert into db
-                dbref.push().setValue(quiz);
+                //dbref.push().setValue(quiz);
                 dbref.child(String.valueOf(maxid+1)).setValue(quiz);
 
                 Toast.makeText(getApplicationContext(), "Data save successfully", Toast.LENGTH_SHORT).show();
@@ -103,8 +97,8 @@ public class QuizActivity extends AppCompatActivity {
         List<String>Subject=new ArrayList<>();
         Subject.add(0,"Subject");
         Subject.add("IP");
-        Subject.add("Mc");
-        Subject.add("Cs");
+        Subject.add("MC");
+        Subject.add("CN");
 
 
         //Style and populate the spinner
