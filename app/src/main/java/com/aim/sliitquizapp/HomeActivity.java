@@ -9,10 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -28,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void selectBtn(View view){
-        Intent intent = new Intent(HomeActivity.this,SelectquizActivity.class);
+        Intent intent = new Intent(HomeActivity.this,QuestionActivity.class);
         startActivity(intent);
     }
 
@@ -58,16 +54,8 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_exit) {
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-        }else if(id == R.id.action_clear){
-            DatabaseReference dbNode = FirebaseDatabase.getInstance().getReference().getRoot().child("Statistics");
-            dbNode.setValue(null);
-            Toast.makeText(HomeActivity.this, "Records Cleared Successfully", Toast.LENGTH_SHORT).show();
-        }else if(id == R.id.action_about){
-
+        if (id == R.id.action_settings) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
