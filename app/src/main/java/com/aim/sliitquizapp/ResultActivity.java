@@ -12,8 +12,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.aim.sliitquizapp.model.Question;
+import com.aim.sliitquizapp.model.Statistics;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -23,6 +30,14 @@ public class ResultActivity extends AppCompatActivity {
     TextView tvP,tvCorrect,tvWrong,tvSkip,tvComment;
     public static final String QLIST = "com.aim.sliitquizapp.QLIST";
     ArrayList<Question> list = new ArrayList<Question>();
+    int flag = 0;
+    DatabaseReference reference;
+    Statistics stat;
+
+    @Override
+    public void onBackPressed() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +110,23 @@ public class ResultActivity extends AppCompatActivity {
 
         }else{
             tvComment.setText(R.string.tx_bad);
+        }
+
+        //------------------------ Store score---------------------------------------------------
+        if(flag == 0) {
+            reference = FirebaseDatabase.getInstance().getReference().child("Statistics");
+            stat = new Statistics();
+            stat.setCorrect(correct);
+            stat.setWrong(wrong);
+            stat.setScore(p);
+            stat.setSkip(skip);
+            stat.setSubject("Programming");
+
+            String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            stat.setDate(date);
+
+            reference.push().setValue(stat);
+            flag++;
         }
     }
 

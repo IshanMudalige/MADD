@@ -8,7 +8,7 @@
     tools:context=".QuestionActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txList"
         android:layout_width="381dp"
         android:layout_height="203dp"
         android:layout_marginStart="16dp"
@@ -48,7 +48,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/txList">
 
         <RadioButton
             android:id="@+id/radioButton"

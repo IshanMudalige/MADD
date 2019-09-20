@@ -74,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/round_btn_blue"
+            android:onClick="statBtn"
             android:text="@string/btn_stat"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
