@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AnswerActivity"></activity>
-        <activity android:name=".ResultActivity" />
+        <activity android:name=".StatisticsActivity" android:parentActivityName=".HomeActivity" android:label="Statistics"/>
+        <activity android:name=".AnswerActivity" android:label="Result Analysis"/>
+        <activity android:name=".ResultActivity" android:parentActivityName=".HomeActivity" android:label="Quiz Result"/>
         <activity android:name=".QuestionActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
