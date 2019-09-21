@@ -35,7 +35,6 @@ public class QuestionActivity extends AppCompatActivity {
     int total = 1;
     int noOfQus = 1;
     String subject = "";
-    int icr = 0;
     DatabaseReference reference;
     DatabaseReference reference1;
 
@@ -87,17 +86,20 @@ public class QuestionActivity extends AppCompatActivity {
         timer = findViewById(R.id.textTimer);
         qCount = findViewById(R.id.textNum);
 
+
         reference1 = FirebaseDatabase.getInstance().getReference().child(subject);
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 noOfQus = (int) dataSnapshot.getChildrenCount();
+                //System.out.println("========="+noOfQus);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
 
         next();
@@ -129,7 +131,7 @@ public class QuestionActivity extends AppCompatActivity {
                     rb2.setText(question.getOption2());
                     rb3.setText(question.getOption3());
                     rb4.setText(question.getOption4());
-                    qCount.setText((total-1)+"/"+icr);
+                    qCount.setText((total-1)+"/"+noOfQus);
 
                     b5.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -178,8 +180,8 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 tv.setText(String.format("%02d",minutes)+":"+String.format("%02d",seconds));
 
-//                if(total == noOfQus || doubleBackToExitPressedOnce)
-//                    cancel();
+                if(total == noOfQus || doubleBackToExitPressedOnce)
+                    cancel();
             }
             public void onFinish(){
                 tv.setText("Finished");
