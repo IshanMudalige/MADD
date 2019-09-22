@@ -3,6 +3,7 @@ package com.aim.sliitquizapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +30,7 @@ public class QuizActivity extends AppCompatActivity {
 
     EditText txtque,txtanswa,txtanswb,txtanswc,txtanswd,txtanswer;
 
-    Button btncreate;
+    Button btncreate,btnshow;
     DatabaseReference dbref;
     long maxid=0;
 
@@ -49,11 +50,13 @@ public class QuizActivity extends AppCompatActivity {
         txtanswd=findViewById(R.id.txtd);
         txtanswer=findViewById(R.id.txtanswer);
 
-        btncreate=findViewById(R.id.btncreat);
+        btncreate=findViewById(R.id.btnupdate);
+        btnshow=findViewById(R.id.btnDelete);
+
 
 
         quiz= new Question();
-       // dbref=FirebaseDatabase.getInstance().getReference().child("Mc");
+       //dbref=FirebaseDatabase.getInstance().getReference().child("Mc");
 
 
 
@@ -98,7 +101,11 @@ public class QuizActivity extends AppCompatActivity {
         Subject.add(0,"Subject");
         Subject.add("IP");
         Subject.add("MC");
-        Subject.add("CN");
+        Subject.add("SE");
+        Subject.add("IWT");
+        Subject.add("DMS");
+        Subject.add("OOC");
+        Subject.add("MADD");
 
 
         //Style and populate the spinner
@@ -129,6 +136,15 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+
+        btnshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuizActivity.this,QuizView.class);
+                startActivity(intent);
             }
         });
 
