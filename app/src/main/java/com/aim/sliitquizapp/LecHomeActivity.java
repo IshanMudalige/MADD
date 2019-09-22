@@ -5,6 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,48 +19,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import android.widget.Button;
-
-public class HomeActivity extends AppCompatActivity {
-
-    FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-
+public class LecHomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
+        setContentView(R.layout.activity_lec_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
     }
 
-    public void selectBtn(View view){
-        Intent intent = new Intent(HomeActivity.this,SelectquizActivity.class);
+    public void btnAddQuiz(View v){
+        Intent intent = new Intent(LecHomeActivity.this,QuizActivity.class);
         startActivity(intent);
     }
-
-    public void statBtn(View view){
-        Intent intent = new Intent(HomeActivity.this,StatisticsActivity.class);
-        startActivity(intent);
-    }
-
-    public void feedBtn(View view){
-        Intent intent = new Intent(HomeActivity.this,FeedbackActivity.class);
-        startActivity(intent);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_lec, menu);
         return true;
     }
 
@@ -67,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_exit) {
-            AlertDialog.Builder adb = new AlertDialog.Builder(HomeActivity.this);
+            AlertDialog.Builder adb = new AlertDialog.Builder(LecHomeActivity.this);
             adb.setMessage("Do you really want to close ?");
             //adb.setIcon(R.drawable.tott);
 
@@ -92,12 +76,8 @@ public class HomeActivity extends AppCompatActivity {
             alert.setTitle("Exiting tha app");
             alert.show();
 
-        }else if(id == R.id.action_clear){
-            DatabaseReference dbNode = FirebaseDatabase.getInstance().getReference().getRoot().child("Statistics");
-            dbNode.setValue(null);
-            Toast.makeText(HomeActivity.this, "Records Cleared Successfully", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.action_about){
-            AlertDialog.Builder adb = new AlertDialog.Builder(HomeActivity.this);
+            AlertDialog.Builder adb = new AlertDialog.Builder(LecHomeActivity.this);
             adb.setMessage("SLIIT Quiz app is a better app for practicing for online mid term examinations");
 
             adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -112,8 +92,7 @@ public class HomeActivity extends AppCompatActivity {
             alert.show();
 
         }else if(id == R.id.action_logout){
-            FirebaseAuth.getInstance().signOut();
-            Intent intToMain = new Intent(HomeActivity.this, MainActivity.class);
+            Intent intToMain = new Intent(LecHomeActivity.this, MainActivity.class);
             startActivity(intToMain);
         }
 

@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Question qus= questionList.get(position);
 
-        holder.tvQuestion.setText(" "+qus.getQuestion());
+        holder.tvQuestion.setText("  "+qus.getQuestion());
 
         holder.tvCAnswer.setText(qus.getAnswer());
 

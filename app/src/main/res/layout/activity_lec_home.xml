@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
-    tools:context=".HomeActivity">
+    tools:context=".LecHomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -47,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/round_btn_blue"
-            android:onClick="selectBtn"
-            android:text="@string/btn_select"
+            android:onClick="btnAddQuiz"
+            android:text="@string/btn_createQuiz"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
 
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/round_btn_blue"
-            android:text="@string/btn_ins"
+            android:text="@string/btn_less"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
 
@@ -74,7 +74,6 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/round_btn_blue"
-            android:onClick="statBtn"
             android:text="@string/btn_stat"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
@@ -88,7 +87,6 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/round_btn_blue"
-            android:onClick="feedBtn"
             android:text="@string/btn_feed"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />

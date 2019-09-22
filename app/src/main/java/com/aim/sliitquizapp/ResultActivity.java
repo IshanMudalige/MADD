@@ -53,7 +53,7 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         list = intent.getParcelableArrayListExtra(QuestionActivity.QLIST);
-
+        String sub = intent.getStringExtra(QuestionActivity.SUB);
         String cr = intent.getStringExtra(QuestionActivity.CORRECT);
         String wr = intent.getStringExtra(QuestionActivity.WRONG);
         String tot = intent.getStringExtra(QuestionActivity.TOTAL);
@@ -120,7 +120,7 @@ public class ResultActivity extends AppCompatActivity {
             stat.setWrong(wrong);
             stat.setScore(p);
             stat.setSkip(skip);
-            stat.setSubject("Programming");
+            stat.setSubject(sub);
 
             String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
             stat.setDate(date);
