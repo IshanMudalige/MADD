@@ -75,6 +75,8 @@ public class QuestionActivity extends AppCompatActivity {
         Intent intent = getIntent();
         subject = intent.getStringExtra(SelectquizActivity.SUBJECT);
 
+        this.setTitle(subject);
+
         b5 = findViewById(R.id.button5);
 
         rb1 =findViewById(R.id.radioButton);
@@ -128,44 +130,45 @@ public class QuestionActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     final Question question = dataSnapshot.getValue(Question.class);
 
-                    qus.setText(" "+(total-1)+" . "+question.getQuestion());
+                        qus.setText(" " + (total - 1) + " . " + question.getQuestion());
 
-                    rb1.setText(question.getOption1());
-                    rb2.setText(question.getOption2());
-                    rb3.setText(question.getOption3());
-                    rb4.setText(question.getOption4());
-                    qCount.setText((total-1)+"/"+noOfQus);
+                        rb1.setText(question.getOption1());
+                        rb2.setText(question.getOption2());
+                        rb3.setText(question.getOption3());
+                        rb4.setText(question.getOption4());
+                        qCount.setText((total - 1) + "/" + noOfQus);
 
-                    b5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            final int s = radioGroup.getCheckedRadioButtonId();
-                            rb = findViewById(s);
+                        b5.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final int s = radioGroup.getCheckedRadioButtonId();
+                                rb = findViewById(s);
 
 
-                            if(s == -1) {
-                                list.add(question);
-                                skip++;
-                                next();
-                            }else if(rb.getText().toString().equals(question.getAnswer())){
-                                correct++;
-                                next();
-                            }else{
-                                wrong++;
-                                question.setChoice(rb.getText().toString());
-                                list.add(question);
-                                next();
+                                if (s == -1) {
+                                    list.add(question);
+                                    skip++;
+                                    next();
+                                } else if (rb.getText().toString().equals(question.getAnswer())) {
+                                    correct++;
+                                    next();
+                                } else {
+                                    wrong++;
+                                    question.setChoice(rb.getText().toString());
+                                    list.add(question);
+                                    next();
+                                }
+                                radioGroup.clearCheck();
                             }
-                            radioGroup.clearCheck();
-                        }
-                    });
+                        });
 
-                }
+                    }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled (@NonNull DatabaseError databaseError){
+                        Toast.makeText(QuestionActivity.this, "Questions not found", Toast.LENGTH_SHORT).show();
+                    }
 
-                }
             });
         }
         total++;
