@@ -88,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/round_btn_blue"
+            android:onClick="feedBtn"
             android:text="@string/btn_feed"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />

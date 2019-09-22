@@ -55,6 +55,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void feedBtn(View view){
+        Intent intent = new Intent(HomeActivity.this,FeedbackActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
