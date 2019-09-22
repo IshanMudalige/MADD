@@ -34,6 +34,7 @@ public class QuestionActivity extends AppCompatActivity {
     int skip = 0;
     int total = 1;
     int noOfQus = 1;
+    int r=0;
     String subject = "";
     DatabaseReference reference;
     DatabaseReference reference1;
@@ -42,6 +43,7 @@ public class QuestionActivity extends AppCompatActivity {
     public static final String WRONG = "com.aim.sliitquizapp.WRONG";
     public static final String QLIST = "com.aim.sliitquizapp.QLIST";
     public static final String TOTAL = "com.aim.sliitquizapp.TOTAL";
+    public static final String SUB = "com.aim.sliitquizapp.SUB";
     boolean doubleBackToExitPressedOnce = false;
     ArrayList<Question> list = new ArrayList<Question>();
 
@@ -110,11 +112,12 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void next(){
         if(total > noOfQus){
+            r=1;
             Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
             intent.putExtra(CORRECT,String.valueOf(correct));
             intent.putExtra(WRONG,String.valueOf(wrong));
             intent.putExtra(TOTAL,String.valueOf((noOfQus)));
-
+            intent.putExtra(SUB,subject);
             intent.putParcelableArrayListExtra(QLIST, (ArrayList<Question>) list);
 
             startActivity(intent);
@@ -180,7 +183,7 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 tv.setText(String.format("%02d",minutes)+":"+String.format("%02d",seconds));
 
-                if(total == noOfQus || doubleBackToExitPressedOnce)
+                if(doubleBackToExitPressedOnce || r == 1)
                     cancel();
             }
             public void onFinish(){
@@ -190,6 +193,7 @@ public class QuestionActivity extends AppCompatActivity {
                 intent.putExtra(WRONG,String.valueOf(wrong));
                 intent.putParcelableArrayListExtra(QLIST, (ArrayList<Question>) list);
                 intent.putExtra(TOTAL,String.valueOf(noOfQus));
+                intent.putExtra(SUB,subject);
                 startActivity(intent);
 
             }
