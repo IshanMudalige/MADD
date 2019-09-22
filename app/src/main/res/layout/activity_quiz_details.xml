@@ -12,7 +12,6 @@
         android:layout_width="184dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint="AnswerD"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/txtanswer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,31 +32,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/txtmk2"
-        android:layout_width="184dp"
-        android:layout_height="39dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/spinsub"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Subjects" />
-
-    <Spinner
-        android:id="@+id/spinsub"
-        android:layout_width="184dp"
-        android:layout_height="0dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="451dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtmk2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="184dp"
         android:layout_height="39dp"
@@ -67,27 +41,25 @@
         app:layout_constraintEnd_toStartOf="@+id/txtq"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtmk2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtq"
         android:layout_width="184dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint="Type a Question"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/txta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/spinsub" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txta"
         android:layout_width="184dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint="AnswerA"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/txtb"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +96,6 @@
         android:layout_width="184dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint="AnswerB"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/txtc"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +120,6 @@
         android:layout_width="184dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint="AnswerC"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/txtd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,17 +129,14 @@
 
     <Button
         android:id="@+id/btnupdate"
-        android:layout_width="0dp"
+        android:layout_width="92dp"
         android:layout_height="45dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginEnd="103dp"
         android:background="@drawable/round_btn"
-        android:text="Add"
+        android:text="UPDATE"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -179,7 +146,7 @@
         android:layout_height="39dp"
         android:text="Answer"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnupdate"
+        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
         app:layout_constraintEnd_toStartOf="@+id/txtanswer"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -190,9 +157,8 @@
         android:layout_width="184dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint="Correct Answer"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnupdate"
+        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -202,13 +168,25 @@
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="71dp"
-        android:layout_marginBottom="33dp"
-        android:background="@drawable/round_btn"
-        android:text="Show"
+        android:background="@drawable/round_btn_blue"
+        android:text="DELETE"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Backbtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnupdate"
+        app:layout_constraintTop_toBottomOf="@+id/txtanswer" />
+
+    <Button
+        android:id="@+id/Backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rs_view"
+        android:text="BACK"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnupdate"
-        app:layout_constraintTop_toBottomOf="@+id/spinsub" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnDelete"
+        app:layout_constraintTop_toBottomOf="@+id/txtanswer" />
 </androidx.constraintlayout.widget.ConstraintLayout>
