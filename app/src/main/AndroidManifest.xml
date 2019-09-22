@@ -16,6 +16,8 @@
         <activity android:name=".FeedbackActivity" android:label="Add FeedBack"/>
         <activity android:name=".FeedbackDetailsActivity" android:label="Manage FeedBack"/>
         <activity android:name=".FeedbackListActivity" android:label="FeedBacks"/>
+        <activity android:name=".QuizDetails" android:label="Manage Questions"/>
+        <activity android:name=".QuizView" android:label="Questions"/>
         <activity
             android:name=".LecHomeActivity"
             android:theme="@style/AppTheme.NoActionBar"

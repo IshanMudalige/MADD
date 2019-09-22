@@ -129,7 +129,7 @@
 
     <Button
         android:id="@+id/btnupdate"
-        android:layout_width="92dp"
+        android:layout_width="120dp"
         android:layout_height="45dp"
         android:background="@drawable/round_btn"
         android:text="UPDATE"
@@ -138,7 +138,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.53" />
 
     <TextView
         android:id="@+id/textView6"
@@ -166,8 +167,8 @@
 
     <Button
         android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
         android:background="@drawable/round_btn_blue"
         android:text="DELETE"
         android:textSize="18sp"
@@ -179,8 +180,8 @@
 
     <Button
         android:id="@+id/Backbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
         android:background="@drawable/rs_view"
         android:text="BACK"
         android:textSize="18sp"
