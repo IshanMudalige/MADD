@@ -14,14 +14,14 @@
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="368dp"
+        android:layout_marginBottom="536dp"
         android:ems="10"
         android:hint="references"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnsave"
         app:layout_constraintEnd_toStartOf="@+id/et2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btnsave" />
 
     <Button
@@ -34,10 +34,10 @@
         android:text="Browse link"
         app:layout_constraintBottom_toTopOf="@+id/et1"
         app:layout_constraintEnd_toStartOf="@+id/btnupdate"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et1"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.024"
         tools:text="Browse LINK" />
 
     <EditText
@@ -60,29 +60,29 @@
 
     <Button
         android:id="@+id/btnupdate"
-        android:layout_width="91dp"
+        android:layout_width="122dp"
         android:layout_height="37dp"
-        android:layout_marginTop="516dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/round_btn"
         android:text="update"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnsave"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="122dp"
         android:layout_height="37dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/round_btn"
         android:text="delete"
-        app:layout_constraintBottom_toTopOf="@+id/btnupdate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnupdate"
-        app:layout_constraintVertical_bias="0.488" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnupdate"
+        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
