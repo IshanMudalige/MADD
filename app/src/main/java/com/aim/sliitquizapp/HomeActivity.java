@@ -6,11 +6,81 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
+
+
+
+
+
+
+    Button btnIns;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        btnIns=(Button) findViewById(R.id.btnIns);
+        btnIns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openexp();
+
+            }
+        });
+
+
+    }
+
+    public void openexp(){
+
+        Intent intent = new Intent(this,exp.class);
+        startActivity(intent);
+    }
+
+
+    /*
+    private Button btnIns;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        btnIns = (Button)findViewById(R.id.btnIns);
+
+
+        btnIns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new exp();
+
+            }
+        });
+    }
+
+    public void openbtnIns(){
+
+        Intent intent = new Intent(this,exp.class);
+        startActivity(intent);
+    }
+
+
+
+*/
+
+
+
+/*
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +92,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
+
+
+*/
+
+
+
 
     public void selectBtn(View view){
         Intent intent = new Intent(HomeActivity.this,QuestionActivity.class);

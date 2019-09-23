@@ -106,6 +106,11 @@ public class Question implements Parcelable {
         this.choice = choice;
     }
 
+    private String des;
+
+    private String ques;
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -120,5 +125,8 @@ public class Question implements Parcelable {
         parcel.writeString(option4);
         parcel.writeString(answer);
         parcel.writeString(choice);
+    }
+
+    public void setDes(String trim) {
     }
 }
