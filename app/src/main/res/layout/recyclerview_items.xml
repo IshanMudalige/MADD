@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardview1"
+    android:id="@+id/cardview2"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     card_view:contentPadding="5dp"
@@ -75,6 +75,7 @@
             android:layout_width="219dp"
             android:layout_height="26dp"
             android:layout_alignTop="@+id/StudentNumber"
+            android:layout_marginStart="4dp"
             android:layout_marginBottom="4dp"
             android:layout_toRightOf="@+id/StudentNumber"
             android:gravity="left|center_vertical"
@@ -84,7 +85,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent" />
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@+id/StudentNumber" />
 
         <TextView
             android:id="@+id/youAns"
@@ -102,10 +104,9 @@
 
         <TextView
             android:id="@+id/tvChoice"
-            android:layout_width="214dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="222dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="12dp"
             android:layout_marginBottom="8dp"
             android:text="Wrong Answer"
             android:textAlignment="textStart"
